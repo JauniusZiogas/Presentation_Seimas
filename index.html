@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DI prezentacija – Seimas, Vyriausybė, koalicija</title>
+  <style>
+    :root{
+      --bg:#f6f7fb;--ink:#111827;--muted:#6b7280;--card:#ffffff;
+      --blue:#2563eb;--indigo:#4f46e5;--green:#059669;--yellow:#d97706;--red:#dc2626;--vio:#6366f1;
+      --radius:22px;--shadow:0 8px 28px rgba(17,24,39,.12);
+    }
+    html,body{height:100%;}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";}
+    .deck{max-width:1200px;margin:0 auto;padding:48px;}
+    .slide{height:calc(100vh - 96px);display:flex;flex-direction:column;justify-content:center;gap:16px;border-radius:var(--radius);box-shadow:var(--shadow);padding:56px;background:var(--card);}    
+    .title{background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff;align-items:center;text-align:center}
+    h1{font-size:44px;margin:0 0 8px 0}
+    h2{font-size:36px;margin:0 0 12px 0}
+    p.lead{font-size:22px;margin:0;color:#e5e7eb}
+    ul,ol{margin:0;padding-left:22px}
+    li{font-size:22px;margin:10px 0}
+    .badge{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;background:#eef2ff;color:#3730a3;font-weight:600;width:max-content}
+    .grid{display:grid;gap:16px}
+    .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .card{background:#fff;border-radius:18px;box-shadow:var(--shadow);padding:22px}
+    .note{font-size:18px;color:var(--muted);margin-top:6px}
+    .accent-blue{background:#eff6ff}
+    .accent-green{background:#ecfdf5}
+    .accent-yellow{background:#fffbeb}
+    .accent-indigo{background:#eef2ff}
+    .accent-red{background:#fef2f2}
+
+    /* Controls */
+    .controls{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;display:flex;align-items:center;gap:10px;background:#fff;border-radius:999px;box-shadow:var(--shadow);padding:8px 12px;z-index:10}
+    .btn{border:0;background:#f3f4f6;color:#111827;border-radius:999px;padding:10px 14px;font-weight:600;cursor:pointer}
+    .btn.primary{background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff}
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;background:#111827;color:#fff;border-radius:6px;padding:2px 8px;font-size:12px}
+
+    /* Progress */
+    .progress{position:fixed;right:24px;bottom:24px;display:flex;gap:6px;z-index:9}
+    .dot{width:10px;height:10px;border-radius:50%;background:#e5e7eb}
+    .dot.active{background:var(--vio)}
+
+    /* Print */
+    @media print{
+      body{background:#fff}
+      .deck{padding:0}
+      .slide{height:auto;break-after:page;box-shadow:none;border-radius:0}
+      .controls,.progress{display:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="deck" id="deck" tabindex="0" aria-label="DI prezentacija. Naudokite klavišus rodyklėms arba mygtukus apačioje.">
+
+    <!-- 1. Titulinis -->
+    <section class="slide title" data-title>
+      <h1>🤖 Dirbtinis intelektas Lietuvos Seime, Vyriausybėje ir koalicijoje</h1>
+      <p class="lead">Kaip DI paversti kasdienybe ir strategijos varikliu</p>
+      <div class="note">Spauskite <span class="kbd">←</span>/<span class="kbd">→</span> arba mygtukus apačioje</div>
+    </section>
+
+    <!-- 2. Strateginė vizija -->
+    <section class="slide">
+      <span class="badge">🎯 Strateginė vizija</span>
+      <ul>
+        <li>DI – ne tik pagalbinis įrankis, o <strong>valdymo kultūros dalis</strong>.</li>
+        <li>Pagerina Seimo narių ir ministrų kasdienį darbą.</li>
+        <li>Didina skaidrumą ir piliečių pasitikėjimą.</li>
+        <li>Tampa <strong>strategijos įgyvendinimo būdu</strong>, o ne tik priedu.</li>
+      </ul>
+    </section>
+
+    <!-- 3. Politiko kasdienybė -->
+    <section class="slide accent-blue">
+      <span class="badge">1️⃣ Politiko kasdienybė („Magic bullet“)</span>
+      <ul>
+        <li>📑 <strong>GPT-asistentas frakcijoms</strong> – įstatymų santraukos, „už/prieš“, kalbų juodraščiai, Q&A.</li>
+        <li>📊 <strong>Viešosios nuomonės radaras</strong> – kasdienė suvestinė apie temas ir rizikas.</li>
+        <li>🛡️ <strong>Krizių valdymo ekspertas</strong> – scenarijų simuliacijos, komunikacijos gairės.</li>
+      </ul>
+      <p class="note">👉 Rezultatas: asmeniškai juntamas laiko sutaupymas ir geresnis pasiruošimas.</p>
+    </section>
+
+    <!-- 4. Strateginė integracija -->
+    <section class="slide accent-green">
+      <span class="badge">2️⃣ Strateginė integracija</span>
+      <ul>
+        <li>🏛️ <strong>Privatizacijos skaidrumo modulis</strong> (Palantir) – rizikos balai, vieša lentelė.</li>
+        <li>⚙️ <strong>Valdžios darbo modernizacija</strong> – transkripcija, darbotvarkės, balsavimo rekomendacijos.</li>
+        <li>🌐 <strong>Viešųjų paslaugų DI</strong> – sukčiavimo prevencija, sveikatos prognozės, piliečių chatbot’ai.</li>
+      </ul>
+      <p class="note">👉 DI tampa sistemos efektyvumo ir skaidrumo garantu.</p>
+    </section>
+
+    <!-- 5. Instituciniai mechanizmai -->
+    <section class="slide accent-yellow">
+      <span class="badge">3️⃣ Instituciniai mechanizmai</span>
+      <ul>
+        <li>👥 Įsteigti tarpžinybinę <strong>DI darbo grupę</strong>.</li>
+        <li>📌 <strong>„Default by AI“ taisyklės</strong> – automatinės santraukos ir transkripcijos.</li>
+        <li>🎓 <strong>Mokymai politikams</strong> apie sprendimų priėmimą su DI (decision engineering).</li>
+      </ul>
+    </section>
+
+    <!-- 6. Politinė nauda -->
+    <section class="slide accent-indigo">
+      <span class="badge">4️⃣ Politinė nauda koalicijai</span>
+      <ul>
+        <li>🚀 <strong>Inovatyvios valdžios įvaizdis</strong> – pirmieji sistemingai diegiantys DI.</li>
+        <li>🤝 <strong>Pasitikėjimo atkūrimas</strong> – skaidrus privatizacijos procesas.</li>
+        <li>⚡ <strong>Efektyvumas</strong> – mažiau biurokratijos, daugiau laiko sprendimams.</li>
+        <li>🛡️ <strong>Apsauga nuo grėsmių</strong> – DI kaip gynyba nuo dezinformacijos.</li>
+      </ul>
+    </section>
+
+    <!-- 7. Pirmieji žingsniai -->
+    <section class="slide accent-red">
+      <span class="badge">5️⃣ Pirmieji žingsniai</span>
+      <ol>
+        <li>Įsteigti DI darbo grupę.</li>
+        <li>Pasirinkti 2 pilotus: GPT-asistentą frakcijoms ir Viešosios nuomonės radarą.</li>
+        <li>Įtraukti Palantir į privatizacijos skaidrumo modulį.</li>
+        <li>Komunikuoti viešai apie rezultatus – parodyti koalicijos inovatyvumą.</li>
+      </ol>
+      <p class="note">👉 DI tampa ir kasdienybės įpročiu, ir strategijos varikliu.</p>
+    </section>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls" role="group" aria-label="Skaidrių navigacija">
+    <button class="btn" id="prev" aria-label="Ankstesnė (←)">← Ankstesnė</button>
+    <button class="btn primary" id="next" aria-label="Kita (→)">Kita →</button>
+    <button class="btn" id="home" aria-label="Į pradžią">Pradžia</button>
+    <button class="btn" onclick="window.print()" aria-label="Spausdinti / PDF">Spausdinti</button>
+  </div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <script>
+    (function(){
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      let i = 0;
+      const deck = document.getElementById('deck');
+      const prevBtn = document.getElementById('prev');
+      const nextBtn = document.getElementById('next');
+      const homeBtn = document.getElementById('home');
+      const progress = document.getElementById('progress');
+
+      function update(){
+        slides.forEach((s,idx)=>{ s.style.display = idx===i? 'flex':'none'; });
+        progress.innerHTML = slides.map((_,idx)=>`<span class="dot ${idx===i?'active':''}"></span>`).join('');
+        window.location.hash = `#${i+1}`;
+      }
+      function next(){ if(i < slides.length-1){ i++; update(); } }
+      function prev(){ if(i > 0){ i--; update(); } }
+      function home(){ i=0; update(); }
+
+      // Init from hash
+      const hash = parseInt(location.hash.replace('#',''),10);
+      if(!isNaN(hash) && hash>=1 && hash<=slides.length){ i = hash-1; }
+      update();
+
+      // Events
+      nextBtn.addEventListener('click', next);
+      prevBtn.addEventListener('click', prev);
+      homeBtn.addEventListener('click', home);
+      deck.addEventListener('click', (e)=>{ if(e.target.closest('a,button')) return; next(); });
+      document.addEventListener('keydown', (e)=>{
+        if(e.key==='ArrowRight' || e.key==='PageDown' || e.key===' '){ next(); }
+        if(e.key==='ArrowLeft' || e.key==='PageUp' || e.key==='Backspace'){ prev(); }
+        if(e.key==='Home'){ home(); }
+      });
+    })();
+  </script>
+</body>
+</html>
